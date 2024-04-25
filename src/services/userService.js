@@ -24,7 +24,8 @@ async function verifyExistisUser(user){
     const filter = {
         $or: [
             {mail: user.mail},
-            {phone: user.phone}
+            {phone: user.phone},
+            {username: user.username}
         ]
     }
 

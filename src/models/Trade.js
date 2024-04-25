@@ -23,6 +23,13 @@ const TradeSchema = new Schema(
                 type: Schema.Types.ObjectId
             }
         ],
+        trades: [],
+        status: {
+            type: String
+        },
+        visible: {
+            type: Boolean
+        },
         investments: [
             {
                 investment: {
