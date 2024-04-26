@@ -45,7 +45,7 @@ async function getOneUser(req, res){
         const user = await findOne(filter)
 
         if(!user){
-            res.status(404).json({
+            return res.status(404).json({
                 message: 'notFoundUser',
                 details: 'Not Found user with this id'
             });

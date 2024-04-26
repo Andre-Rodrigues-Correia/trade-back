@@ -1,7 +1,7 @@
 import {Router} from "express";
 import {
     createGroup,
-    getAllGroups,
+    getAllGroups, getOneGroupById,
     getUserGroupsById,
     updateOneGroup,
     verifyUserIsOwnerGroup
@@ -12,6 +12,7 @@ const groupRoutes = Router();
 groupRoutes.post('/', createGroup);
 groupRoutes.get('/', getAllGroups)
 groupRoutes.get('/:id', getUserGroupsById);
+groupRoutes.get('/:id/group', getOneGroupById);
 groupRoutes.get('/:groupId/:userId', verifyUserIsOwnerGroup)
 groupRoutes.put('/:id', updateOneGroup)
 

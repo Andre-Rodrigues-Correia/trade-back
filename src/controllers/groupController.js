@@ -52,6 +52,31 @@ async function getUserGroupsById(req, res){
     }
 }
 
+async function getOneGroupById(req, res){
+    const groupId = req.params.id
+
+    const filter = {
+        _id: groupId
+    }
+
+    try {
+
+        const group = await findOne(filter);
+
+        console.log(group);
+
+        return res.status(200).json({
+            message: group
+        });
+
+    } catch (error) {
+        logger.error(`Error in group controller: ${error.message}`)
+        res.status(500).json({
+            message: 'internalServerError'
+        });
+    }
+}
+
 async function getAllGroups(req, res){
 
     try {
@@ -139,4 +164,4 @@ async function updateOneGroup(req, res){
     }
 }
 
-export { createGroup, getUserGroupsById, updateOneGroup, verifyUserIsOwnerGroup, getAllGroups }
+export { createGroup, getUserGroupsById, getOneGroupById, updateOneGroup, verifyUserIsOwnerGroup, getAllGroups }
