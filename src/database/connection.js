@@ -9,6 +9,9 @@ const connectDB = async () => {
         databaseUrl = process.env.DB_PROD
     }
 
+
+    console.log(databaseUrl)
+
     try {
         await mongoose.connect(databaseUrl);
         logger.info('Conexão com banco de dados realizada com sucesso')
