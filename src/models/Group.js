@@ -13,36 +13,41 @@ const GroupSchema = new Schema(
             required: [true, 'description is required'],
             trim: true
         },
-        owner: {
-            userId: {
+        ownerId: {
                 type: Schema.Types.ObjectId,
                 ref: 'User',
                 required: [true, 'userId is required'],
                 trim: true
-            },
-            username: {
-                type: String,
-                required: [true, 'username is required'],
-                unique: true,
-                trim: true,
-            },
         },
-        subscribers: [
-            {
-                userId: {
-                    type: Schema.Types.ObjectId,
-                    required: [true, 'userId is required'],
-                    ref: 'User',
-                    trim: true
-                },
-                username: {
-                    type: String,
-                    required: [true, 'username is required'],
-                    unique: true,
-                    trim: true,
-                },
-            }
-        ],
+        image: {
+            type: String,
+            required: true
+        },
+        price: {
+            type: Number
+        }
+        // username: {
+        //     type: String,
+        //     required: [true, 'username is required'],
+        //     unique: true,
+        //     trim: true,
+        // },
+        // subscribers: [
+        //     {
+        //         userId: {
+        //             type: Schema.Types.ObjectId,
+        //             required: [true, 'userId is required'],
+        //             ref: 'User',
+        //             trim: true
+        //         },
+        //         username: {
+        //             type: String,
+        //             required: [true, 'username is required'],
+        //             unique: true,
+        //             trim: true,
+        //         },
+        //     }
+        // ],
     }
 )
 

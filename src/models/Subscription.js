@@ -15,6 +15,9 @@ const SubscriptionSchema = new Schema(
             required: [true, 'groupId is required'],
             trim: true
         },
+        username: {
+            type: String
+        },
         active: {
             type: Boolean,
             required: true

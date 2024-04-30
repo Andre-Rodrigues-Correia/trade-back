@@ -27,12 +27,17 @@ const UserSchema = new Schema(
             required: [true, 'password is required'],
             minlength: [6, 'the password must contain at least 6 characters'],
         },
+        phone: {
+            type: Number,
+            required: [true, 'phone is required']
+        },
         birthday: {
             type: Date,
             required: [true, 'birthday is required'],
             trim: true
         },
     }
-)
+);
+
 
 export default model('User', UserSchema)
