@@ -1,6 +1,3 @@
-
-import {ObjectId} from "mongodb";
-import {uploadImage} from "../services/firebaseService.js";
 import {find, findOne, save, updateOne} from "../services/groupService.js";
 import logger from "../utils/logger.js";
 
