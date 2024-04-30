@@ -6,14 +6,15 @@ import {
     updateOneGroup,
     verifyUserIsOwnerGroup
 } from "../controllers/groupController.js";
+import {addUserInfos, verifyToken} from "../middlewares/authMiddlewares.js";
 
 const groupRoutes = Router();
 
 groupRoutes.post('/', createGroup);
-groupRoutes.get('/', getAllGroups)
-groupRoutes.get('/:id', getUserGroupsById);
-groupRoutes.get('/:id/group', getOneGroupById);
-groupRoutes.get('/:groupId/:userId', verifyUserIsOwnerGroup)
-groupRoutes.put('/:id', updateOneGroup)
+groupRoutes.get('/', addUserInfos, verifyToken, getAllGroups)
+groupRoutes.get('/:id', addUserInfos, verifyToken, getUserGroupsById);
+groupRoutes.get('/:id/group', addUserInfos, verifyToken, getOneGroupById);
+groupRoutes.get('/:groupId/:userId', addUserInfos, verifyToken, verifyUserIsOwnerGroup)
+groupRoutes.put('/:id', addUserInfos, verifyToken, updateOneGroup)
 
 export default groupRoutes;

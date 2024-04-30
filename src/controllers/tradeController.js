@@ -1,11 +1,14 @@
 import {deleteOne, find, findOne, save, updateOne} from "../services/tradeService.js";
+import {findOne as findOneGroup} from '../services/groupService.js'
 import logger from "../utils/logger.js";
 
 
 
 async function createTrade (req, res) {
 
-    console.log(req.body)
+    console.log('aqui');
+    console.log(req.body);
+    console.log(req.user);
 
     try {
 
@@ -86,11 +89,28 @@ async function getGroupTradesById(req, res){
 async function updateOneTrade(req, res){
     const id = req.params.id;
 
+
+
     const filter = {
         _id: id
     }
 
     try {
+        const group = await findOneGroup({_id: req.body.groupId});
+
+        if(!group){
+            return res.status(404).json({
+                message: 'groupNotFound',
+                details: 'Group not found'
+            })
+        }
+
+        if(!(group.ownerId == req.user._id)){
+            return res.status(404).json({
+                message: 'unauthorized',
+                details: 'Dont permission for this content'
+            })
+        }
 
         const existTrade = await find(filter);
 
@@ -126,7 +146,12 @@ async function deleteOneTrade(req, res){
 
     try {
 
-        const existTrade = await find(filter);
+
+        const existTrade = await findOne(filter);
+
+
+
+        console.log(existTrade)
 
         if(!existTrade){
             return res.status(404).json({
@@ -134,6 +159,23 @@ async function deleteOneTrade(req, res){
                 details: 'Subscription not found'
             })
         }
+
+        const group = await findOneGroup({_id: existTrade.groupId});
+
+        if(!group){
+            return res.status(404).json({
+                message: 'groupNotFound',
+                details: 'Group not found'
+            })
+        }
+
+        if(!(group.ownerId == req.user._id)){
+            return res.status(404).json({
+                message: 'unauthorized',
+                details: 'Dont permission for this content'
+            })
+        }
+
 
         await deleteOne(filter, req.body);
 

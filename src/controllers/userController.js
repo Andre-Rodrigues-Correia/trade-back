@@ -1,5 +1,5 @@
 import logger from "../utils/logger.js";
-import {find, findOne, save, verifyExistisUser} from "../services/userService.js";
+import {find, findOne, save, updateOne, verifyExistisUser} from "../services/userService.js";
 
 
 async function createuser(req, res)  {
@@ -85,7 +85,37 @@ async function getAllUsers(req, res){
 
 
 async function updateOneUser(req, res){
+    const id = req.params.id;
 
+    const filter = {
+        _id: id
+    }
+
+    try {
+
+        const existsUser = await find(filter);
+
+        if(!existsUser){
+            return res.status(404).json({
+                message: 'userNotFound',
+                details: 'User not found'
+            })
+        }
+
+        const updatedUser = await updateOne(filter, req.body);
+
+        return res.status(200).json({
+            message: updatedUser,
+            details: 'User updated with success'
+        })
+
+
+    } catch (error) {
+        logger.error(`Error in user controller: ${error.message}`)
+        res.status(500).json({
+            message: 'internalServerError'
+        });
+    }
 }
 
 async function deleteOneUser(req, res){

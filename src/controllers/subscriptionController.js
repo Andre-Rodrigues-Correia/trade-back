@@ -1,5 +1,5 @@
 import logger from "../utils/logger.js";
-import {save, find, updateOne, deleteOne} from "../services/subscriptionService.js";
+import {save, find, updateOne, deleteOne, findOne} from "../services/subscriptionService.js";
 
 
 async function createSubscription(req, res){
@@ -61,7 +61,7 @@ async function verifyUserAccessGroup(req, res){
 
     try {
 
-        const userSubscriptions = await find({
+        const userSubscriptions = await findOne({
             groupId:group,
             userId: user
         })
