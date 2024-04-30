@@ -18,6 +18,18 @@ const TradeSchema = new Schema(
             ref: 'Group',
             required: [true, 'groupId is required'],
         },
+        subscribes: [
+            {
+                type: Schema.Types.ObjectId
+            }
+        ],
+        trades: [],
+        status: {
+            type: String
+        },
+        visible: {
+            type: Boolean
+        },
         investments: [
             {
                 investment: {
