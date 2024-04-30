@@ -10,8 +10,6 @@ const connectDB = async () => {
     }
 
 
-    console.log(databaseUrl)
-
     try {
         await mongoose.connect(databaseUrl);
         logger.info('Conexão com banco de dados realizada com sucesso')
