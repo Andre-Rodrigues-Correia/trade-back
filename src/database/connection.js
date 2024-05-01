@@ -9,6 +9,8 @@ const connectDB = async () => {
         databaseUrl = process.env.DB_PROD
     }
 
+    console.log(databaseUrl)
+
 
     try {
         await mongoose.connect(databaseUrl);
