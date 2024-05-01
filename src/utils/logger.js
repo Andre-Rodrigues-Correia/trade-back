@@ -9,7 +9,7 @@ const levels = {
 }
 
 const level = () => {
-    const env = process.env.ENVIRONMENT || 'staging';
+    const env = 'prod';
     const isDevelopment = env === 'staging'
     return isDevelopment ? 'debug' : 'warn'
 };
