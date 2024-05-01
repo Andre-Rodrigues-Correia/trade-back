@@ -3,9 +3,6 @@ import {connectDB} from "./database/connection.js";
 
 
 
-
-const PORT = process.env.PORT
-
-app.listen(PORT, async () => {
+app.listen(21187, async () => {
     await connectDB();
 })
