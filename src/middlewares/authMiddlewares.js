@@ -2,7 +2,7 @@ import 'dotenv/config.js'
 import logger from "../utils/logger.js";
 import jwt from 'jsonwebtoken'
 
-const SECRET = 'uisjfbhwsdguifweiguhweuigvuiwergiuhewuiguiwefguiweuihfgwehuifwehuifhuiwefuhiweuihf'
+const SECRET = process.env.SECRET
 
 async function verifyToken(req, res, next){
 

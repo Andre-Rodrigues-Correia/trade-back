@@ -4,7 +4,7 @@ import bcrypt from "bcrypt";
 import {findOne} from "../services/userService.js";
 import jwt from 'jsonwebtoken'
 
-const SECRET = 'uisjfbhwsdguifweiguhweuigvuiwergiuhewuiguiwefguiweuihfgwehuifwehuifhuiwefuhiweuihf';
+const SECRET = process.env.SECRET;
 
 async function signIn(req, res){
 
