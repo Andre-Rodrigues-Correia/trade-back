@@ -9,7 +9,7 @@ const levels = {
 }
 
 const level = () => {
-    const env = process.env.ENVIRONMENT || 'staging';
+    const env = 'prod';
     const isDevelopment = env === 'staging'
     return isDevelopment ? 'debug' : 'warn'
 };
@@ -34,11 +34,11 @@ const format = winston.format.combine(
 
 const transports = [
     new winston.transports.Console(),
-    new winston.transports.File({
-        filename: 'logs/error.log',
-        level: 'error'
-    }),
-    new winston.transports.File({ filename: 'logs/all.log' }),
+    // new winston.transports.File({
+    //     filename: 'logs/error.log',
+    //     level: 'error'
+    // }),
+    // new winston.transports.File({ filename: 'logs/all.log' }),
 ]
 
 const logger = winston.createLogger({

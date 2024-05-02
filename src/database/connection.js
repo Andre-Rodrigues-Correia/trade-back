@@ -5,14 +5,14 @@ import 'dotenv/config.js'
 
 const connectDB = async () => {
 
-    let databaseUrl = process.env.DB_STAGING
+    let databaseUrl = 'mongodb://futgroups01:Andre2015@mongodb.futgroups.kinghost.net/futgroups01'
 
-
-    if (process.env.ENVIRONMENT === 'prod'){
-        databaseUrl = process.env.DB_PROD
-    }
-
-    console.log(databaseUrl)
+    //
+    // if (process.env.ENVIRONMENT === 'prod'){
+    //     databaseUrl = process.env.DB_PROD
+    // }
+    //
+    // console.log(databaseUrl)
 
 
     try {
