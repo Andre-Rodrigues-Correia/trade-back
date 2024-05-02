@@ -5,7 +5,7 @@ import 'dotenv/config.js'
 
 const connectDB = async () => {
 
-    let databaseUrl = 'mongodb://futgroups01:Andre2015@mongodb.futgroups.kinghost.net/futgroups01'
+    let databaseUrl = 'mongodb://andrerodrigues01:Andre2015@mongodb.andrerodriguescorreia.com.br/andrerodrigues01'
 
     //
     // if (process.env.ENVIRONMENT === 'prod'){
