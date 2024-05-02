@@ -7,7 +7,6 @@ const connectDB = async () => {
 
     let databaseUrl = process.env.DB_STAGING
 
-    console.log(process.env)
 
     if (process.env.ENVIRONMENT === 'prod'){
         databaseUrl = process.env.DB_PROD
