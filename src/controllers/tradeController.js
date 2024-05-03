@@ -66,10 +66,13 @@ async function getTradeById(req, res){
 async function getGroupTradesById(req, res){
     const groupId = req.params.id;
 
+    const filter = {
+        _id: groupId
+    }
 
     try {
 
-        const groupTrades = await find();
+        const groupTrades = await find(filter);
 
         return res.status(200).json({
             message: groupTrades,
