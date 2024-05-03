@@ -67,7 +67,7 @@ async function getGroupTradesById(req, res){
     const groupId = req.params.id;
 
     const filter = {
-        _id: groupId
+        groupId: groupId
     }
 
     try {
